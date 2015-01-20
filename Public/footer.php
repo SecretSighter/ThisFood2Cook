@@ -1,5 +1,5 @@
-<script src="serverCall.js"></script>
-<script src="generateOptions.js"></script>
-<script src="events.js"></script>
+<script src="recipejs/serverCall.js"></script>
+<script src="recipejs/generateOptions.js"></script>
+<script src="recipejs/events.js"></script>
 </body>
 </html>

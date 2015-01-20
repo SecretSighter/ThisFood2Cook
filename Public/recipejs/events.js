@@ -1,3 +1,5 @@
+var id_array = [];
+
 function load(element_to_use, event_to_listen_for, function_to_call) {
     element_to_use.addEventListener(event_to_listen_for, function_to_call, false);
 }
@@ -25,7 +27,10 @@ function createLink() {
 
     for (i = 0; i < id_array.length; i += 1) {
         create_element = document.getElementById(id_array[i]);
-        load(create_element, "click", elementID(id_array[i]));
+        load(create_element, "click", function() {
+            dispalySelectedRecipe(id_array[i]);
+        });
+        id_array.shift();
     }
 }
 

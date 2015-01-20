@@ -1,5 +1,4 @@
 "use strict";
-var id_array = [];
 //add function to create elements. replace portion of displaySelectedRecipie code and have it refrence this function.
 
 //needs work
