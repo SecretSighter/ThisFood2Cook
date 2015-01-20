@@ -1,0 +1,16 @@
+[    
+    {
+        "toMake": "Cookies",
+        "ingredients": [
+            {"ingredient": "butter", "amount": "1/2", "mesure": "Cup"},
+            {"ingredient": "sugar", "amount": 3, "mesure": "Table Spoon"}
+        ]
+    },
+    {
+        "toMake": "Bread",
+        "ingredients": [
+            {"ingredient": "flour", "amount": 3, "mesure": "cup"},
+            {"ingredient": "baking powder", "amount": 3, "mesure": "tea spoon"}
+        ]
+    }
+]
