@@ -27,7 +27,7 @@ function createLink() {
     for (i = 0; i < id_array.length; i += 1) {
         create_element = document.getElementById(id_array[i]);
         load(create_element, "click", function(e) {
-            console.log(e.target.id);//dispalySelectedRecipe
+            dispalySelectedRecipe(e.target.id);
         });
     }
 }

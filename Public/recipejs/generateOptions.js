@@ -2,21 +2,24 @@
 //add function to create elements. replace portion of displaySelectedRecipie code and have it refrence this function.
 
 //needs work
-// function dispalySelectedRecipe() {
-//     var display_recipe = document.getElementById("recipe_display"),
-//         results_div = document.getElementById("search_results"),
-//         create_innerHTML = "",
-//         i;
+function dispalySelectedRecipe(clicked) {
+    var display_recipe = document.getElementById("recipe_display"),
+        results_div = document.getElementById("search_results"),
+        request_recipie = document.getElementById(clicked),
+        create_innerHTML = "",
+        i;
 
-//     results_div.innerHTML = "";
-//     create_innerHTML += serverCallMonitor.response.toMake + "working";
-    
-//     for(i = 0; i < serverCallMonitor.response)
-    
-//     display_recipe.innerHTML = create_innerHTML;
+    if (id_array[0]) {
+        removeLink();
+    }
 
-//     removeLink();
-// }
+    results_div.innerHTML = "";
+    create_innerHTML += serverCallMonitor.response[0].toMake + "working";
+    
+    // for(i = 0; i < serverCallMonitor.response)
+    
+    display_recipe.innerHTML = create_innerHTML;
+}
 
 /*
 * Function displaySearchResults: searches though a parsed json file then desplays results in html
