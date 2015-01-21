@@ -16,21 +16,19 @@ function removeLink() {
         destroy_element = document.getElementById(id_array[i]);
         unload(destroy_element, "click");
     }
+
+    id_array = [];
 }
 
 function createLink() {
-    var elementID = function (id) {
-            dispalySelectedRecipe(id);
-        },
-        create_element,
+    var create_element,
         i;
 
     for (i = 0; i < id_array.length; i += 1) {
         create_element = document.getElementById(id_array[i]);
-        load(create_element, "click", function() {
-            dispalySelectedRecipe(id_array[i]);
+        load(create_element, "click", function(e) {
+            console.log(e.target.id);//dispalySelectedRecipe
         });
-        id_array.shift();
     }
 }
 
