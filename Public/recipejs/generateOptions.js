@@ -34,7 +34,7 @@ function displaySearchResults(response, search) {
         removeLink();
     }
 
-    if (_const.search_type.checked) {
+    if (_const.search_type_name.checked) {
         for (i = 0; i < response.length; i += 1) {
             if (user_finder.test(response[i].toMake)) {
                 results_string += "<p id=\"A" + i.toString() + "\">" + response[i].toMake + "</p>";

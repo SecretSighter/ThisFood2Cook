@@ -14,7 +14,7 @@ function removeLink() {
 
     for (i = 0; i < id_array.length; i += 1) {
         destroy_element = document.getElementById(id_array[i]);
-        unload(destroy_element, "click");
+        unload(destroy_element, _const.user_event_click);
     }
 
     id_array = [];
@@ -26,24 +26,19 @@ function createLink() {
 
     for (i = 0; i < id_array.length; i += 1) {
         create_element = document.getElementById(id_array[i]);
-        load(create_element, "click", function(e) {
+        load(create_element, _const.user_event_click, function(e) {
             dispalySelectedRecipe(e.target.id);
         });
     }
 }
 
 function loadInitialListeners() {
-    var user_input = document.getElementById("search_for"),
-        search_type_A = document.getElementById("search_type_name"),
-        search_type_B = document.getElementById("search_type_ingredient"),
-        Search_type_change = "change",
-        user_event = "keyup";
 
     serverCallMonitor.callInfo();
 
-    load(_const.user_input, user_event, searchrecipes);
-    load(_const.search_type, Search_type_change, searchrecipes);
-    load(search_type_B, Search_type_change, searchrecipes);
+    load(_const.user_search,            _const.user_event_keyup,   searchrecipes);
+    load(_const.search_type_name,       _const.Search_type_change, searchrecipes);
+    load(_const.search_type_ingredient, _const.Search_type_change, searchrecipes);
 }
 
 window.onload = loadInitialListeners();

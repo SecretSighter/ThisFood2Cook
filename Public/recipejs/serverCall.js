@@ -2,10 +2,9 @@ var serverCallMonitor = {
     server_called: false,
     response: null,
 
-    //get json file from server
+    // get json file from server
     getrecipesFromServer: function (callback) {
-        var httpRequest = new XMLHttpRequest(),
-            url_path = "../Private/recipesContainer.json";
+        var httpRequest = new XMLHttpRequest();
 
         httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
@@ -13,7 +12,7 @@ var serverCallMonitor = {
             }
         };
 
-        httpRequest.open("GET", url_path, true);
+        httpRequest.open("GET", _const.recipe_file, true);
         httpRequest.send();
     },
 
@@ -30,12 +29,12 @@ var serverCallMonitor = {
 
 //check for user search. output search results.
 function searchrecipes() {
-    var user_input = document.getElementById("search_for"),
-        server_output = document.getElementById("search_results");
-
-    if (user_input.value !== "") {
-        displaySearchResults(serverCallMonitor.response, user_input.value);
+    if (_const.user_search.value !== "") {
+        displaySearchResults(serverCallMonitor.response, _const.user_search.value);
     } else {
-        server_output.innerHTML = "";
+        if(id_array[0]) {
+            removeLink();
+        }
+        _const.results_div.innerHTML = "";
     }
 }
