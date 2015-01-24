@@ -3,9 +3,7 @@
 
 //needs work
 function dispalySelectedRecipe(clicked) {
-    var display_recipe = document.getElementById("recipe_display"),
-        results_div = document.getElementById("search_results"),
-        request_recipie = document.getElementById(clicked),
+    var request_recipie = document.getElementById(clicked),
         create_innerHTML = "",
         i;
 
@@ -13,12 +11,12 @@ function dispalySelectedRecipe(clicked) {
         removeLink();
     }
 
-    results_div.innerHTML = "";
+    _const.results_div.innerHTML = "";
     create_innerHTML += serverCallMonitor.response[0].toMake + "working";
     
     // for(i = 0; i < serverCallMonitor.response)
     
-    display_recipe.innerHTML = create_innerHTML;
+    _const.display_recipe.innerHTML = create_innerHTML;
 }
 
 /*
@@ -27,9 +25,7 @@ function dispalySelectedRecipe(clicked) {
 * Parameter search: string to search for in json file
 */
 function displaySearchResults(response, search) {
-    var search_type = document.getElementById("search_type_name").checked,
-        results_div = document.getElementById("search_results"),
-        user_finder = new RegExp(search, 'i'),
+    var user_finder = new RegExp(search, 'i'),
         results_string = "",
         i,
         j;
@@ -38,7 +34,7 @@ function displaySearchResults(response, search) {
         removeLink();
     }
 
-    if (search_type) {
+    if (_const.search_type.checked) {
         for (i = 0; i < response.length; i += 1) {
             if (user_finder.test(response[i].toMake)) {
                 results_string += "<p id=\"A" + i.toString() + "\">" + response[i].toMake + "</p>";
@@ -57,7 +53,7 @@ function displaySearchResults(response, search) {
         }
     }
 
-    results_div.innerHTML = results_string;
+    _const.results_div.innerHTML = results_string;
     
     if (id_array[0]) {
         createLink();

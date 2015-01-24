@@ -41,8 +41,8 @@ function loadInitialListeners() {
 
     serverCallMonitor.callInfo();
 
-    load(user_input, user_event, searchrecipes);
-    load(search_type_A, Search_type_change, searchrecipes);
+    load(_const.user_input, user_event, searchrecipes);
+    load(_const.search_type, Search_type_change, searchrecipes);
     load(search_type_B, Search_type_change, searchrecipes);
 }
 
