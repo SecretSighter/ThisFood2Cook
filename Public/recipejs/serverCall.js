@@ -27,10 +27,15 @@ var serverCallMonitor = {
     }
 };
 
+function escapeRegExp(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 //check for user search. output search results.
 function searchrecipes() {
-    if (_const.user_search.value !== "") {
-        displaySearchResults(serverCallMonitor.response, _const.user_search.value);
+    var cleaned_string = escapeRegExp(_const.user_search.value)
+    if (cleaned_string !== "") {
+        displaySearchResults(serverCallMonitor.response, cleaned_string);
     } else {
         if(id_array[0]) {
             removeLink();

@@ -25,4 +25,4 @@ defineConstant(_const, 'user_event_keyup',          "keyup");
 defineConstant(_const, 'user_event_click',          "click");
 
 // Url
-defineConstant(_const, 'recipe_file',          "http://localhost/Recipies/Private/recipesContainer.json");
+defineConstant(_const, 'recipe_file',               "http://localhost/Recipes/Private/recipesContainer.json");
