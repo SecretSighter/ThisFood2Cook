@@ -1,8 +1,10 @@
 var serverCallMonitor = {
-    server_called: false,
     response: null,
 
-    // get json file from server
+    /*
+    * Function explanation: get json file from server
+    * Parameter callBack: function to return server file to as a perameter
+    */
     getrecipesFromServer: function (callback) {
         var httpRequest = new XMLHttpRequest();
 
@@ -16,14 +18,35 @@ var serverCallMonitor = {
         httpRequest.send();
     },
 
+    /*
+    * Function explanation: check if file is recieved from the server. if not get file.
+    */
     callInfo: function () {
         var get_response;
-        if (!this.server_called) {
+        if (this.response === null) {
             this.getrecipesFromServer(function (server_response) {
                 serverCallMonitor.response = JSON.parse(server_response);
             });
-            this.server_called = true;
         }
+    }
+
+    /*
+    * Function explanation: search ingredients for match.
+    * Parameter clicked_recipe: ingredient to search for.
+    * Returns: array containing ingredient index.
+    */
+    getRecipesByIngredient: function(clicked_recipe) {
+        var recipe_array = [];
+
+        for (i = 0; i < this.response.length; i += 1) {
+            for (j = 0; j < this.response[i].ingredients.length; j += 1) {
+                if (this.response[i].ingredients[j].ingredient === clicked_recipe) {
+                    recipe_array.push(i);
+                    break;
+                }
+            }
+        }
+        return recipe_array;
     }
 };
 

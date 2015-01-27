@@ -20,7 +20,7 @@ function dispalySelectedRecipe(clicked) {
 }
 
 /*
-* Function displaySearchResults: searches though a parsed json file then desplays results in html
+* Function explanation: searches though a parsed json file then desplays results in html
 * Parameter response: parsed json file
 * Parameter search: string to search for in json file
 */
@@ -37,16 +37,16 @@ function displaySearchResults(response, search) {
     if (_const.search_type_name.checked) {
         for (i = 0; i < response.length; i += 1) {
             if (user_finder.test(response[i].toMake)) {
-                results_string += "<p id=\"A" + i.toString() + "\">" + response[i].toMake + "</p>";
-                id_array.push("A" + i.toString());
+                results_string += "<p id=\"" + i.toString() + "\">" + response[i].toMake + "</p>";
+                id_array.push(i.toString());
             }
         }
     } else {
         for (i = 0; i < response.length; i += 1) {
             for (j = 0; j < response[i].ingredients.length; j += 1) {
                 if (user_finder.test(response[i].ingredients[j].ingredient)) {
-                    results_string += "<p id=\"A" + i.toString() + "\">" + response[i].toMake + "</p>";
-                    id_array.push("A" + i.toString());
+                    results_string += "<p id=\"" + i.toString() + "\">" + response[i].ingredients[j].ingredient + "</p>";
+                    id_array.push(i.toString());
                     break;
                 }
             }
