@@ -37,6 +37,7 @@ function createLink() {
             load(create_element, _const.user_event_click, function(e) {
                 var clicked_recipe = document.getElementById(e.target.id).innerHTML,
                 results_string = "",
+                recipe_index = serverCallMonitor.getRecipeIndex(clicked_recipe),
                 i,
                 j;
 

@@ -12,7 +12,10 @@ function dispalySelectedRecipe(clicked) {
     }
 
     _const.results_div.innerHTML = "";
-    create_innerHTML += serverCallMonitor.response[0].toMake + "working";
+    create_innerHTML += serverCallMonitor.response[clicked].toMake + "<br/><br/>";
+    for (i = 0; i < serverCallMonitor.response[clicked].ingredients.length; i += 1) {
+        create_innerHTML += serverCallMonitor.response[clicked].ingredients[i].ingredient + "<br/>";
+    }
     
     // for(i = 0; i < serverCallMonitor.response)
     
