@@ -2,7 +2,7 @@ var serverCallMonitor = {
     response: null,
 
     /*
-    * Function explanation: get json file from server
+    * Method explanation: get json file from server
     * Parameter callBack: function to return server file to as a perameter
     */
     getrecipesFromServer: function (callback) {
@@ -19,7 +19,7 @@ var serverCallMonitor = {
     },
 
     /*
-    * Function explanation: check if file is recieved from the server. if not get file.
+    * Method explanation: check if file is recieved from the server. if not get file
     */
     callInfo: function () {
         var get_response;
@@ -31,9 +31,9 @@ var serverCallMonitor = {
     },
 
     /*
-    * Function explanation: search ingredients for match.
-    * Parameter clicked_recipe: ingredient to search for.
-    * Returns: array containing recipe index.
+    * Method explanation: search ingredients for match
+    * Parameter clicked_recipe: ingredient to search for
+    * Returns: array containing recipe index
     */
     getRecipeIndex: function(clicked_recipe) {
         var recipe_index = [];
@@ -50,9 +50,9 @@ var serverCallMonitor = {
     },
 
     /*
-    * Function explanation: search ingredients for match.
-    * Parameter clicked_recipe: ingredient to search for.
-    * Returns: array containing ingredient index.
+    * Method explanation: search ingredients for match
+    * Parameter clicked_recipe: ingredient to search for
+    * Returns: array containing ingredient index
     */
     getIngredientIndex: function() {
         var ingredient_index = [];
@@ -68,11 +68,16 @@ var serverCallMonitor = {
     }
 };
 
+    /*
+    * Function explanation: cleans user input
+    * Parameter string: user input
+    * Returns: clean string
+    */
 function escapeRegExp(string){
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-//check for user search. output search results.
+//check for user search. output search results
 function searchrecipes() {
     var cleaned_string = escapeRegExp(_const.user_search.value)
     if (cleaned_string !== "") {

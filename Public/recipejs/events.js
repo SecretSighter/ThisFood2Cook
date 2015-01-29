@@ -1,13 +1,22 @@
 var id_array = [];
 
+/*
+* Function explanation: removes event listeners from elements
+*/
 function load(element_to_use, event_to_listen_for, function_to_call) {
     element_to_use.addEventListener(event_to_listen_for, function_to_call, false);
 }
 
+/*
+* Function explanation: adds event listeners to elements
+*/
 function unload(element_to_use, event_to_listen_for) {
     element_to_use.removeEventListener(event_to_listen_for, false);
 }
 
+/*
+* Function explanation: loops though elemetns needing event handlers removed
+*/
 function removeLink() {
     var destroy_element,
         i;
@@ -20,6 +29,9 @@ function removeLink() {
     id_array = [];
 }
 
+/*
+* Function explanation: create link to search generated elements
+*/
 function createLink() {
     var create_element,
         i;
@@ -35,29 +47,7 @@ function createLink() {
         for (i = 0; i < id_array.length; i += 1) {
             create_element = document.getElementById(id_array[i]);
             load(create_element, _const.user_event_click, function(e) {
-                var clicked_recipe = document.getElementById(e.target.id).innerHTML,
-                results_string = "",
-                recipe_index = serverCallMonitor.getRecipeIndex(clicked_recipe),
-                i,
-                j;
-
-                _const.user_search.value = clicked_recipe;
-                removeLink();
-                
-                for (i = 0; i < serverCallMonitor.response.length; i += 1) {
-                    for (j = 0; j < serverCallMonitor.response[i].ingredients.length; j += 1) {
-                        if (serverCallMonitor.response[i].ingredients[j].ingredient === clicked_recipe) {
-                            results_string += "<p id=\"" + i.toString() + "\">" + serverCallMonitor.response[i].toMake + "</p>";
-                            id_array.push(i.toString());
-                            break;
-                        }
-                    }
-                }
-
-                _const.results_div.innerHTML = results_string;
-                _const.search_type_name.checked = true;
-                _const.search_type_ingredient.checked = false;
-                createLink();
+                displayIngredientSearch(e.target.id);
             });
         }
     }

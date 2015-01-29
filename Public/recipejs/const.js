@@ -18,6 +18,7 @@ defineConstant(_const, 'results_div',               document.getElementById("sea
 defineConstant(_const, 'display_recipe',            document.getElementById("recipe_display"));
 defineConstant(_const, 'search_type_ingredient',    document.getElementById("search_type_ingredient"));
 defineConstant(_const, 'user_search',               document.getElementById("search_for"));
+defineConstant(_const, 'hint_span',					document.getElementById("hint_span"));
 
 // Event constatnts
 defineConstant(_const, 'Search_type_change',        "change");
