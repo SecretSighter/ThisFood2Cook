@@ -83,7 +83,7 @@ function searchrecipes() {
     if (cleaned_string !== "") {
         displaySearchResults(serverCallMonitor.response, cleaned_string);
     } else {
-        if(id_array[0]) {
+        if(globe.getID(0)) {
             removeLink();
         }
         _const.results_div.innerHTML = "";

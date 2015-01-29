@@ -20,7 +20,7 @@ function displayIngredientSearch(clicked) {
             for (j = 0; j < serverCallMonitor.response[i].ingredients.length; j += 1) {
                 if (serverCallMonitor.response[i].ingredients[j].ingredient === clicked_recipe) {
                     results_string += "<p id=\"" + i.toString() + "\">" + serverCallMonitor.response[i].toMake + "</p>";
-                    id_array.push(i.toString());
+                    globe.addID(i.toString());
                     break;
                 }
             }
@@ -41,7 +41,7 @@ function dispalySelectedRecipe(clicked) {
         create_innerHTML = "<br />",
         i;
 
-    if (id_array[0]) {
+    if (globe.getID(0)) {
         removeLink();
     }
 
@@ -71,7 +71,7 @@ function displaySearchResults(response, search) {
         i,
         j;
 
-    if(id_array[0]) {
+    if(globe.getID(0)) {
         removeLink();
     }
 
@@ -79,7 +79,7 @@ function displaySearchResults(response, search) {
         for (i = 0; i < response.length; i += 1) {
             if (user_finder.test(response[i].toMake)) {
                 results_string += "<p id=\"" + i.toString() + "\">" + response[i].toMake + "</p>";
-                id_array.push(i.toString());
+                globe.addID(i.toString());
             }
         }
     } else {
@@ -87,7 +87,7 @@ function displaySearchResults(response, search) {
             for (j = 0; j < response[i].ingredients.length; j += 1) {
                 if (user_finder.test(response[i].ingredients[j].ingredient)) {
                     results_string += "<p id=\"" + i.toString() + "\">" + response[i].ingredients[j].ingredient + "</p>";
-                    id_array.push(i.toString());
+                    globe.addID(i.toString());
                     break;
                 }
             }
@@ -97,7 +97,7 @@ function displaySearchResults(response, search) {
     _const.hint_span.innerHTML = "";
     _const.results_div.innerHTML = results_string;
     
-    if (id_array[0]) {
+    if (globe.getID(0)) {
         createLink();
     }
 }

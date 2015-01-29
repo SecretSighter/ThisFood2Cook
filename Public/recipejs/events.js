@@ -1,4 +1,27 @@
-var id_array = [];
+/*
+* Object explanation: container for all global variables
+* Variable id_array: array containing temporary HTML element IDs
+*/
+var globe = (function() {
+    var pub = {},
+        id_array = [];
+
+        //id_array menthods start
+        pub.addID = function(IDinput) {
+            id_array.push(IDinput);
+        },
+
+        pub.unloadID = function() {
+            id_array = [];
+        },
+
+        pub.getID = function(IDinput) {
+            return id_array[IDinput];
+        };
+        //id_array methods end
+
+    return pub;
+}());
 
 /*
 * Function explanation: removes event listeners from elements
@@ -21,12 +44,12 @@ function removeLink() {
     var destroy_element,
         i;
 
-    for (i = 0; i < id_array.length; i += 1) {
-        destroy_element = document.getElementById(id_array[i]);
+    for (i = 0; i < globe.getID.length; i += 1) {
+        destroy_element = document.getElementById(globe.getID(i));
         unload(destroy_element, _const.user_event_click);
     }
 
-    id_array = [];
+    globe.unloadID();
 }
 
 /*
@@ -37,15 +60,15 @@ function createLink() {
         i;
 
     if (_const.search_type_name.checked) {
-        for (i = 0; i < id_array.length; i += 1) {
-            create_element = document.getElementById(id_array[i]);
+        for (i = 0; i < globe.getID.length; i += 1) {
+            create_element = document.getElementById(globe.getID(i));
             load(create_element, _const.user_event_click, function(e) {
                 dispalySelectedRecipe(e.target.id);
             });
         }
     } else {
-        for (i = 0; i < id_array.length; i += 1) {
-            create_element = document.getElementById(id_array[i]);
+        for (i = 0; i < globe.getID.length; i += 1) {
+            create_element = document.getElementById(globe.getID(i));
             load(create_element, _const.user_event_click, function(e) {
                 displayIngredientSearch(e.target.id);
             });
