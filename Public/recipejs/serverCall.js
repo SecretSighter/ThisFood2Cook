@@ -14,7 +14,7 @@ var serverCallMonitor = {
             }
         };
 
-        httpRequest.open("GET", _const.recipe_file, true);
+        httpRequest.open("GET", globe.recipe_file, true);
         httpRequest.send();
     },
 
@@ -68,24 +68,26 @@ var serverCallMonitor = {
     }
 };
 
-    /*
-    * Function explanation: cleans user input
-    * Parameter string: user input
-    * Returns: clean string
-    */
+/*
+* Function explanation: cleans user input
+* Parameter string: user input
+* Returns: clean string
+*/
 function escapeRegExp(string){
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-//check for user search. output search results
+/*
+* Function explanation: checks user input to determin if recipes should be searched
+*/
 function searchrecipes() {
-    var cleaned_string = escapeRegExp(_const.user_search.value)
+    var cleaned_string = escapeRegExp(globe.user_search.value)
     if (cleaned_string !== "") {
         displaySearchResults(serverCallMonitor.response, cleaned_string);
     } else {
         if(globe.getID(0)) {
             removeLink();
         }
-        _const.results_div.innerHTML = "";
+        globe.results_div.innerHTML = "";
     }
 }

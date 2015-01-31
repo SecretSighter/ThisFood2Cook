@@ -1,6 +1,4 @@
 "use strict";
-//add function to create elements. replace portion of displaySelectedRecipie code and have it refrence this function.
-
 /*
 * Function explanation: displays recipes containing selected ingredient
 * Parameter clicked: selected ingredient
@@ -12,8 +10,8 @@ function displayIngredientSearch(clicked) {
         i,
         j;
 
-        _const.hint_span.innerHTML = " Recipes containing " + clicked_recipe;
-        _const.user_search.value = "";
+        globe.hint_span.innerHTML = " Recipes containing " + clicked_recipe;
+        globe.user_search.value = "";
         removeLink();
         
         for (i = 0; i < serverCallMonitor.response.length; i += 1) {
@@ -26,9 +24,9 @@ function displayIngredientSearch(clicked) {
             }
         }
 
-        _const.results_div.innerHTML = results_string;
-        _const.search_type_name.checked = true;
-        _const.search_type_ingredient.checked = false;
+        globe.results_div.innerHTML = results_string;
+        globe.search_type_name.checked = true;
+        globe.search_type_ingredient.checked = false;
         createLink();
 }
 
@@ -45,9 +43,9 @@ function dispalySelectedRecipe(clicked) {
         removeLink();
     }
 
-    _const.user_search.value = "";
-    _const.hint_span.innerHTML = "";
-    _const.results_div.innerHTML = "";
+    globe.user_search.value = "";
+    globe.hint_span.innerHTML = "";
+    globe.results_div.innerHTML = "";
     create_innerHTML += serverCallMonitor.response[clicked].toMake + " Recipe<br /><br />";
     for (i = 0; i < serverCallMonitor.response[clicked].ingredients.length; i += 1) {
         create_innerHTML += "<span class=\"ingredients\">" + serverCallMonitor.response[clicked].ingredients[i].ingredient + "</span> ";
@@ -57,7 +55,7 @@ function dispalySelectedRecipe(clicked) {
     
     // for(i = 0; i < serverCallMonitor.response)
     
-    _const.display_recipe.innerHTML = create_innerHTML;
+    globe.display_recipe.innerHTML = create_innerHTML;
 }
 
 /*
@@ -75,7 +73,7 @@ function displaySearchResults(response, search) {
         removeLink();
     }
 
-    if (_const.search_type_name.checked) {
+    if (globe.search_type_name.checked) {
         for (i = 0; i < response.length; i += 1) {
             if (user_finder.test(response[i].toMake)) {
                 results_string += "<p id=\"" + i.toString() + "\">" + response[i].toMake + "</p>";
@@ -94,8 +92,8 @@ function displaySearchResults(response, search) {
         }
     }
 
-    _const.hint_span.innerHTML = "";
-    _const.results_div.innerHTML = results_string;
+    globe.hint_span.innerHTML = "";
+    globe.results_div.innerHTML = results_string;
     
     if (globe.getID(0)) {
         createLink();
