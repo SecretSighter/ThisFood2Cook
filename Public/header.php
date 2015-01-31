@@ -2,5 +2,6 @@
 <html>
 <head>
  <title>recipes</title>
- <link src="/recipecss.try.css"></link>
+ <meta charset="utf-8" />
+ <link rel="stylesheet" href="recipecss/some.css" />
 </head>

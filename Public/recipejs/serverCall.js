@@ -28,43 +28,6 @@ var serverCallMonitor = {
                 serverCallMonitor.response = JSON.parse(server_response);
             });
         }
-    },
-
-    /*
-    * Method explanation: search ingredients for match
-    * Parameter clicked_recipe: ingredient to search for
-    * Returns: array containing recipe index
-    */
-    getRecipeIndex: function(clicked_recipe) {
-        var recipe_index = [];
-
-        for (i = 0; i < this.response.length; i += 1) {
-            for (j = 0; j < this.response[i].ingredients.length; j += 1) {
-                if (this.response[i].ingredients[j].ingredient === clicked_recipe) {
-                    recipe_index.push(i);
-                    break;
-                }
-            }
-        }
-        return recipe_index;
-    },
-
-    /*
-    * Method explanation: search ingredients for match
-    * Parameter clicked_recipe: ingredient to search for
-    * Returns: array containing ingredient index
-    */
-    getIngredientIndex: function() {
-        var ingredient_index = [];
-
-        for (i = 0; i < this.response.length; i += 1) {
-            for (j = 0; j < this.response[i].ingredients.length; j += 1) {
-                if (this.response[i].ingredients[j].ingredient === clicked_recipe) {
-                    ingredient_index[i].push(i);
-                    break;
-                }
-            }
-        }
     }
 };
 

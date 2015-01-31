@@ -15,21 +15,21 @@ var globe = (function() {
 
     // id_array menthods start -----------------------
     /*
-    * Function explanation: adds element to ID array
+    * Method explanation: adds element to ID array
     */
     pub.addID = function(IDinput) {
         id_array.push(IDinput);
     },
 
     /*
-    * Function explanation: empties ID array
+    * Method explanation: empties ID array
     */
     pub.unloadID = function() {
         id_array = [];
     },
 
     /*
-    * Function explanation: returns ID array element
+    * Method explanation: returns ID array element
     * return: array element
     */
     pub.getID = function(IDinput) {

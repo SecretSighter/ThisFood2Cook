@@ -6,7 +6,6 @@
 function displayIngredientSearch(clicked) {
     var clicked_recipe = document.getElementById(clicked).innerHTML,
         results_string = "",
-        recipe_index = serverCallMonitor.getRecipeIndex(clicked_recipe),
         i,
         j;
 
