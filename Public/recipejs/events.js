@@ -43,7 +43,7 @@ function removeLink() {
     var destroy_element,
         i;
 
-    for (i = 0; i < globe.getID.length; i += 1) {
+    for (i = 0; i < globe.lengthID(); i += 1) {
         destroy_element = document.getElementById(globe.getID(i));
         unload(destroy_element, globe.user_event_click);
     }
@@ -59,14 +59,14 @@ function createLink() {
         i;
 
     if (globe.search_type_name.checked) {
-        for (i = 0; i < globe.getID.length; i += 1) {
+        for (i = 0; i < globe.lengthID(); i += 1) {
             create_element = document.getElementById(globe.getID(i));
             load(create_element, globe.user_event_click, function(e) {
                 dispalySelectedRecipe(e.target.id);
             });
         }
     } else {
-        for (i = 0; i < globe.getID.length; i += 1) {
+        for (i = 0; i < globe.lengthID(); i += 1) {
             create_element = document.getElementById(globe.getID(i));
             load(create_element, globe.user_event_click, function(e) {
                 displayIngredientSearch(e.target.id);
