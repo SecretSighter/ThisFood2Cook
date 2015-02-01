@@ -3,7 +3,10 @@ div {
   color: #333333;
   background-color: #DDDDDD; }
 
-body {
-  background-color: #d0e4fe; }
+input {
+  border: 2px solid;
+  border-radius: 25px;
+  line-height: 140%;
+  text-indent: 10px; }
 
 /*# sourceMappingURL=all.css.map */

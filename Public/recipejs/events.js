@@ -56,7 +56,7 @@ function createLink() {
 */
 function loadInitialListeners() {
 
-    serverCallMonitor.callInfo();
+    // globe.callInfo();
 
     load(globe.user_search,            globe.user_event_keyup,   searchrecipes);
     load(globe.search_type_name,       globe.Search_type_change, searchrecipes);

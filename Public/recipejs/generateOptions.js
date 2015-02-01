@@ -6,6 +6,7 @@
 function displayIngredientSearch(clicked) {
     var clicked_recipe = document.getElementById(clicked).innerHTML,
         results_string = "",
+        r_list = globe.getRecipes(),
         i,
         j;
 
@@ -13,10 +14,10 @@ function displayIngredientSearch(clicked) {
         globe.user_search.value = "";
         removeLink();
         
-        for (i = 0; i < serverCallMonitor.response.length; i += 1) {
-            for (j = 0; j < serverCallMonitor.response[i].ingredients.length; j += 1) {
-                if (serverCallMonitor.response[i].ingredients[j].ingredient === clicked_recipe) {
-                    results_string += "<p id=\"" + i.toString() + "\">" + serverCallMonitor.response[i].toMake + "</p>";
+        for (i = 0; i < r_list.length; i += 1) {
+            for (j = 0; j < r_list[i].ingredients.length; j += 1) {
+                if (r_list[i].ingredients[j].ingredient === clicked_recipe) {
+                    results_string += "<p id=\"" + i.toString() + "\">" + r_list[i].toMake + "</p>";
                     globe.addID(i.toString());
                     break;
                 }
@@ -36,6 +37,7 @@ function displayIngredientSearch(clicked) {
 function dispalySelectedRecipe(clicked) {
     var request_recipie = document.getElementById(clicked),
         create_innerHTML = "<br />",
+        r_list = globe.getRecipes(),
         i;
 
     if (globe.getID(0)) {
@@ -45,14 +47,16 @@ function dispalySelectedRecipe(clicked) {
     globe.user_search.value = "";
     globe.hint_span.innerHTML = "";
     globe.results_div.innerHTML = "";
-    create_innerHTML += serverCallMonitor.response[clicked].toMake + " Recipe<br /><br />";
-    for (i = 0; i < serverCallMonitor.response[clicked].ingredients.length; i += 1) {
-        create_innerHTML += "<span class=\"ingredients\">" + serverCallMonitor.response[clicked].ingredients[i].ingredient + "</span> ";
-        create_innerHTML += "<span class=\"amount\">" + serverCallMonitor.response[clicked].ingredients[i].amount + "</span> ";
-        create_innerHTML += "<span class=\"mesure\">" + serverCallMonitor.response[clicked].ingredients[i].mesure + "</span><br />";
+    create_innerHTML += r_list[clicked].toMake + " Recipe<br /><br /><table>";
+    create_innerHTML += "<tr><th>ingredients</th><th>Amount</th><th>Mesure</th></tr>"
+    for (i = 0; i < r_list[clicked].ingredients.length; i += 1) {
+        create_innerHTML += "<tr>"
+        create_innerHTML += "<td class=\"ingredients\">" + r_list[clicked].ingredients[i].ingredient + "</td>";
+        create_innerHTML += "<td class=\"amount\">" + r_list[clicked].ingredients[i].amount + "</td>";
+        create_innerHTML += "<td class=\"mesure\">" + r_list[clicked].ingredients[i].mesure + "</td>";
+        create_innerHTML += "</tr>"
     }
-    
-    // for(i = 0; i < serverCallMonitor.response)
+    create_innerHTML += "</table>"
     
     globe.display_recipe.innerHTML = create_innerHTML;
 }
