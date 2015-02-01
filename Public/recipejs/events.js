@@ -1,4 +1,28 @@
 /*
+* Function explanation: cleans user input
+* Parameter string: user input
+* Returns: clean string
+*/
+function escapeRegExp(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/*
+* Function explanation: checks user input to determin if recipes should be searched
+*/
+function searchrecipes() {
+    var cleaned_string = escapeRegExp(globe.user_search.value)
+    if (cleaned_string !== "") {
+        displaySearchResults(globe.getRecipes(), cleaned_string);
+    } else {
+        if(globe.getID(0)) {
+            removeLink();
+        }
+        globe.results_div.innerHTML = "";
+    }
+}
+
+/*
 * Function explanation: removes event listeners from elements
 */
 function load(element_to_use, event_to_listen_for, function_to_call) {
@@ -55,9 +79,6 @@ function createLink() {
 * Function explanation: load all nessesary event liteners to start
 */
 function loadInitialListeners() {
-
-    // globe.callInfo();
-
     load(globe.user_search,            globe.user_event_keyup,   searchrecipes);
     load(globe.search_type_name,       globe.Search_type_change, searchrecipes);
     load(globe.search_type_ingredient, globe.Search_type_change, searchrecipes);
