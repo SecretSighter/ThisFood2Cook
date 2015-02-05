@@ -1,6 +1,6 @@
-recipes web page preject.
+recipes web page project.
 
-Perpouse:
+purpose:
     Create a web page that contains all susan's and my recipes (ones we use or made).
     
 Features:
