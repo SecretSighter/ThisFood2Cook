@@ -17,6 +17,7 @@ function displayIngredientSearch(clicked) {
         for (i = 0; i < r_list.length; i += 1) {
             for (j = 0; j < r_list[i].ingredients.length; j += 1) {
                 if (r_list[i].ingredients[j].ingredient === clicked_recipe) {
+
                     results_string += "<p id=\"" + i.toString() + "\">" + r_list[i].toMake + "</p>";
                     globe.addID(i.toString());
                     break;
@@ -38,6 +39,8 @@ function dispalySelectedRecipe(clicked) {
     var request_recipie = document.getElementById(clicked),
         create_innerHTML = "<br />",
         r_list = globe.getRecipes(),
+        lines,
+        plural,
         i;
 
     if (globe.getID(0)) {
@@ -47,13 +50,26 @@ function dispalySelectedRecipe(clicked) {
     globe.user_search.value = "";
     globe.hint_span.innerHTML = "";
     globe.results_div.innerHTML = "";
-    create_innerHTML += r_list[clicked].toMake + " Recipe<br /><br /><table>";
+    create_innerHTML += "" + r_list[clicked].toMake + " Recipe<br /><table>";
     create_innerHTML += "<tr><th>ingredients</th><th>Amount</th><th>Mesure</th></tr>"
     for (i = 0; i < r_list[clicked].ingredients.length; i += 1) {
+        
+        if (i % 2 === 0) {
+            lines = "even";
+        } else {
+            lines = "odd"
+        }
+        
+        if (r_list[clicked].ingredients[i].amount > 1) {
+            plural = "s";
+        } else {
+            plural = "";
+        }
+
         create_innerHTML += "<tr>"
-        create_innerHTML += "<td class=\"ingredients\">" + r_list[clicked].ingredients[i].ingredient + "</td>";
-        create_innerHTML += "<td class=\"amount\">" + r_list[clicked].ingredients[i].amount + "</td>";
-        create_innerHTML += "<td class=\"mesure\">" + r_list[clicked].ingredients[i].mesure + "</td>";
+        create_innerHTML += "<td class=\"ingredients " + lines + "\">" + r_list[clicked].ingredients[i].ingredient + "</td>";
+        create_innerHTML += "<td class=\"amount " + lines + "\">" + r_list[clicked].ingredients[i].amount + "</td>";
+        create_innerHTML += "<td class=\"mesure " + lines + "\">" + r_list[clicked].ingredients[i].mesure + plural + "</td>";
         create_innerHTML += "</tr>"
     }
     create_innerHTML += "</table>"
@@ -79,6 +95,7 @@ function displaySearchResults(response, search) {
     if (globe.search_type_name.checked) {
         for (i = 0; i < response.length; i += 1) {
             if (user_finder.test(response[i].toMake)) {
+
                 results_string += "<p id=\"" + i.toString() + "\">" + response[i].toMake + "</p>";
                 globe.addID(i.toString());
             }
@@ -87,6 +104,7 @@ function displaySearchResults(response, search) {
         for (i = 0; i < response.length; i += 1) {
             for (j = 0; j < response[i].ingredients.length; j += 1) {
                 if (user_finder.test(response[i].ingredients[j].ingredient)) {
+
                     results_string += "<p id=\"" + i.toString() + "\">" + response[i].ingredients[j].ingredient + "</p>";
                     globe.addID(i.toString());
                     break;
@@ -96,6 +114,9 @@ function displaySearchResults(response, search) {
     }
 
     globe.hint_span.innerHTML = "";
+    if (results_string === "") {
+        results_string = "<span>No results.</span>";
+    }
     globe.results_div.innerHTML = results_string;
     
     if (globe.getID(0)) {

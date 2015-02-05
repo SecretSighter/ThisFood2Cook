@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>recipes</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="recipecss/all.css" />
+</head>
+<body>
+    <div>
+        <div id="search_container">
+            <span>Search recipes by :</span>
+            <input type="radio" name="search_type" id="search_type_name" checked="checked"></input><span>name</span>
+            <input type="radio" name="search_type" id="search_type_ingredient"></input><span>ingredient</span><br />
+            <input type="text" id="search_for"></input><br /><span id="hint_span"></span>
+            <span id="search_results"></span>
+        </div>      
+        <span id="recipe_display"></span>
+    </div>
+<script src="recipejs/globalVariables.js"></script>
+<script src="recipejs/generateOptions.js"></script>
+<script src="recipejs/events.js"></script>
+</body>
+</html>

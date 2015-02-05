@@ -79,7 +79,9 @@ function createLink() {
 * Function explanation: load all nessesary event liteners to start
 */
 function loadInitialListeners() {
-    load(globe.user_search,            globe.user_event_keyup,   searchrecipes);
+    load(globe.user_search,            globe.user_event_keyup,   function () {
+            setTimeout(searchrecipes, 300)
+        });
     load(globe.search_type_name,       globe.Search_type_change, searchrecipes);
     load(globe.search_type_ingredient, globe.Search_type_change, searchrecipes);
 }
