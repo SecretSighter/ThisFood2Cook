@@ -1,15 +1,15 @@
 recipes web page project.
 
 purpose:
-    Create a web page that contains all susan's and my recipes (ones we use or made).
+    Create a web page that contains all Susan's and my recipes (ones we use or made).
     
 Features:
-    Genrate recipes without reloading the page.
+    Generate recipes without reloading the page.
     Search for recipes by name.
-    Search for recipes by ingredience.
-    Input new recipeis on webpage.
+    Search for recipes by ingredients.
+    Input new recipes on webpage.
     Update recipes.
-    Remove recipes(ment for mastakes only).
+    Remove recipes(meant for mistakes only).
     Display user notes on recipes
 
 Organization:
@@ -18,4 +18,4 @@ Organization:
     User contributions.
 
 Notes:
-    This is inteded to be used for mobile as well.
+    This is intended to be used for mobile as well.
